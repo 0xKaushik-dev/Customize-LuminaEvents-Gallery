@@ -248,7 +248,7 @@ const LuminaEvents = () => {
   // Smooth Scroll Implementation
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 2.0, // Slower duration for smoother feel (default is 1.0)
+      duration: 1.2, // Standard smooth scroll duration
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       direction: 'vertical',
       gestureDirection: 'vertical',
@@ -256,7 +256,7 @@ const LuminaEvents = () => {
       mouseMultiplier: 1,
       smoothTouch: false,
       touchMultiplier: 2,
-      wheelMultiplier: 0.8, // Reduces the scroll speed per wheel tick
+      wheelMultiplier: 1, // Reset to standard speed
     });
 
     function raf(time) {
@@ -680,18 +680,20 @@ const LuminaEvents = () => {
           <>
             {/* Hero Section */}
             <header className="pt-32 pb-16 px-6 md:pt-48 md:pb-24 max-w-7xl mx-auto" id="home">
-              <h1 className="text-5xl md:text-8xl font-serif font-medium tracking-tight leading-[0.9] mb-8">
-                Capturing the <br />
-                soul of the <span className="text-gray-400">moment.</span>
-              </h1>
-              <p className="text-lg md:text-xl text-gray-600 max-w-xl leading-relaxed">
-                Lumina is a premium creative collective crafting timeless visual narratives for weddings, events, and brands.
-              </p>
+              <InView>
+                <h1 className="text-5xl md:text-8xl font-serif font-medium tracking-tight leading-[0.9] mb-8">
+                  Capturing the <br />
+                  soul of the <span className="text-gray-400">moment.</span>
+                </h1>
+                <p className="text-lg md:text-xl text-gray-600 max-w-xl leading-relaxed">
+                  Lumina is a premium creative collective crafting timeless visual narratives for weddings, events, and brands.
+                </p>
 
-              <div className="flex items-center gap-2 mt-8 text-sm font-medium">
-                ★★★★★ 4.9/5
-                <span className="text-gray-400 font-normal ml-2">Trusted by 200+ couples & brands</span>
-              </div>
+                <div className="flex items-center gap-2 mt-8 text-sm font-medium">
+                  ★★★★★ 4.9/5
+                  <span className="text-gray-400 font-normal ml-2">Trusted by 200+ couples & brands</span>
+                </div>
+              </InView>
 
               {/* Hero Image */}
               <div className="mt-16 w-full h-[50vh] md:h-[80vh] bg-gray-100 rounded-3xl overflow-hidden relative group">
@@ -722,26 +724,28 @@ const LuminaEvents = () => {
                   <span className="float-right text-gray-400 text-sm font-medium">(01)</span>
                 </div>
                 <div className="md:w-2/3">
-                  <h2 className="text-3xl md:text-5xl font-medium leading-tight mb-8">
-                    We focus on creating <br />
-                    <span className="text-gray-400">simple, purposeful,</span> <br />
-                    and elegant memories.
-                  </h2>
-                  <p className="text-gray-600 mb-12 max-w-lg">
-                    Our studio is dedicated to the art of visual storytelling. We strip away the artificial to reveal the genuine emotion of your special day. From high-end drone cinematography to intimate candid photography, we cover it all.
-                  </p>
+                  <InView delay={200}>
+                    <h2 className="text-3xl md:text-5xl font-medium leading-tight mb-8">
+                      We focus on creating <br />
+                      <span className="text-gray-400">simple, purposeful,</span> <br />
+                      and elegant memories.
+                    </h2>
+                    <p className="text-gray-600 mb-12 max-w-lg">
+                      Our studio is dedicated to the art of visual storytelling. We strip away the artificial to reveal the genuine emotion of your special day. From high-end drone cinematography to intimate candid photography, we cover it all.
+                    </p>
 
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4 text-lg">
-                      <span className="font-bold">10+</span> <span className="text-gray-600">Years of Experience</span>
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-4 text-lg">
+                        <span className="font-bold">10+</span> <span className="text-gray-600">Years of Experience</span>
+                      </div>
+                      <div className="flex items-center gap-4 text-lg">
+                        <span className="font-bold">500+</span> <span className="text-gray-600">Events Covered</span>
+                      </div>
+                      <div className="flex items-center gap-4 text-lg">
+                        <span className="font-bold">100%</span> <span className="text-gray-600">Client Satisfaction</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-4 text-lg">
-                      <span className="font-bold">500+</span> <span className="text-gray-600">Events Covered</span>
-                    </div>
-                    <div className="flex items-center gap-4 text-lg">
-                      <span className="font-bold">100%</span> <span className="text-gray-600">Client Satisfaction</span>
-                    </div>
-                  </div>
+                  </InView>
                 </div>
               </div>
             </section>
@@ -763,7 +767,7 @@ const LuminaEvents = () => {
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[150px] md:auto-rows-[250px]">
                 {homeGalleryHighlights.map((img, idx) => (
-                  <div key={idx} className={`relative overflow-hidden rounded-2xl group ${img.className} bg-gray-100`}>
+                  <InView key={idx} delay={idx * 100} className={`relative overflow-hidden rounded-2xl group ${img.className} bg-gray-100`}>
                     <img
                       src={img.src}
                       alt="Gallery Highlight"
@@ -771,7 +775,7 @@ const LuminaEvents = () => {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                  </div>
+                  </InView>
                 ))}
               </div>
 
@@ -805,14 +809,16 @@ const LuminaEvents = () => {
                 <div className="md:w-2/3">
                   <div className="divide-y divide-gray-800">
                     {services.map((service, idx) => (
-                      <div key={idx} className="py-6 group cursor-pointer transition-colors hover:bg-gray-900 px-4 -mx-4 rounded-xl">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-2xl md:text-3xl font-light group-hover:pl-4 transition-all duration-300 flex items-center gap-4">
-                            {service.title}
-                          </h3>
-                          <Plus className="text-gray-500 group-hover:text-white transition-colors group-hover:rotate-90 duration-300" />
+                      <InView key={idx} delay={idx * 100}>
+                        <div className="py-6 group cursor-pointer transition-colors hover:bg-gray-900 px-4 -mx-4 rounded-xl">
+                          <div className="flex items-center justify-between">
+                            <h3 className="text-2xl md:text-3xl font-light group-hover:pl-4 transition-all duration-300 flex items-center gap-4">
+                              {service.title}
+                            </h3>
+                            <Plus className="text-gray-500 group-hover:text-white transition-colors group-hover:rotate-90 duration-300" />
+                          </div>
                         </div>
-                      </div>
+                      </InView>
                     ))}
                   </div>
                 </div>
@@ -828,49 +834,53 @@ const LuminaEvents = () => {
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Package 1 */}
-                <div className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                  <div className="flex justify-between items-start mb-6">
-                    <span className="bg-gray-100 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Most Popular</span>
-                    <span className="text-2xl font-serif font-bold">Wedding Essential</span>
+                <InView delay={100} className="h-full">
+                  <div className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 h-full">
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="bg-gray-100 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Most Popular</span>
+                      <span className="text-2xl font-serif font-bold">Wedding Essential</span>
+                    </div>
+                    <div className="text-4xl font-bold mb-2">₹1,50,000<span className="text-lg text-gray-400 font-normal">/day</span></div>
+                    <p className="text-gray-500 mb-8 text-sm">Perfect for traditional weddings capturing all key ceremonies.</p>
+
+                    <ul className="space-y-3 mb-8 text-sm text-gray-600">
+                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-black"></div> 2 Candid Photographers</li>
+                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-black"></div> 2 Cinematographers</li>
+                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-black"></div> Drone Coverage (Aerials)</li>
+                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-black"></div> 3-5 Minute Cinematic Highlight</li>
+                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-black"></div> 500+ Edited Images</li>
+                    </ul>
+
+                    <button className="w-full bg-black text-white py-4 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors flex justify-center items-center gap-2">
+                      Inquire Now <ArrowRight className="w-4 h-4" />
+                    </button>
                   </div>
-                  <div className="text-4xl font-bold mb-2">₹1,50,000<span className="text-lg text-gray-400 font-normal">/day</span></div>
-                  <p className="text-gray-500 mb-8 text-sm">Perfect for traditional weddings capturing all key ceremonies.</p>
-
-                  <ul className="space-y-3 mb-8 text-sm text-gray-600">
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-black"></div> 2 Candid Photographers</li>
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-black"></div> 2 Cinematographers</li>
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-black"></div> Drone Coverage (Aerials)</li>
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-black"></div> 3-5 Minute Cinematic Highlight</li>
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-black"></div> 500+ Edited Images</li>
-                  </ul>
-
-                  <button className="w-full bg-black text-white py-4 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors flex justify-center items-center gap-2">
-                    Inquire Now <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
+                </InView>
 
                 {/* Package 2 */}
-                <div className="bg-black text-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gray-800 rounded-full blur-3xl -mr-16 -mt-16 opacity-50"></div>
-                  <div className="flex justify-between items-start mb-6 relative z-10">
-                    <span className="bg-gray-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-300">Cinematic</span>
-                    <span className="text-2xl font-serif font-bold">The Royal Cut</span>
+                <InView delay={300} className="h-full">
+                  <div className="bg-black text-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative overflow-hidden h-full">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gray-800 rounded-full blur-3xl -mr-16 -mt-16 opacity-50"></div>
+                    <div className="flex justify-between items-start mb-6 relative z-10">
+                      <span className="bg-gray-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-300">Cinematic</span>
+                      <span className="text-2xl font-serif font-bold">The Royal Cut</span>
+                    </div>
+                    <div className="text-4xl font-bold mb-2 relative z-10">₹2,50,000<span className="text-lg text-gray-500 font-normal">/day</span></div>
+                    <p className="text-gray-400 mb-8 text-sm relative z-10">For grand celebrations requiring a full production crew.</p>
+
+                    <ul className="space-y-3 mb-8 text-sm text-gray-300 relative z-10">
+                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-white"></div> 3 Senior Photographers</li>
+                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-white"></div> 3 Senior Cinematographers</li>
+                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-white"></div> Dual Drone Coverage</li>
+                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-white"></div> Same Day Edit (SDE) for Reception</li>
+                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-white"></div> Premium Photo Album</li>
+                    </ul>
+
+                    <button className="w-full bg-white text-black py-4 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors flex justify-center items-center gap-2 relative z-10">
+                      Get Started <Plus className="w-4 h-4" />
+                    </button>
                   </div>
-                  <div className="text-4xl font-bold mb-2 relative z-10">₹2,50,000<span className="text-lg text-gray-500 font-normal">/day</span></div>
-                  <p className="text-gray-400 mb-8 text-sm relative z-10">For grand celebrations requiring a full production crew.</p>
-
-                  <ul className="space-y-3 mb-8 text-sm text-gray-300 relative z-10">
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-white"></div> 3 Senior Photographers</li>
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-white"></div> 3 Senior Cinematographers</li>
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-white"></div> Dual Drone Coverage</li>
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-white"></div> Same Day Edit (SDE) for Reception</li>
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-white"></div> Premium Photo Album</li>
-                  </ul>
-
-                  <button className="w-full bg-white text-black py-4 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors flex justify-center items-center gap-2 relative z-10">
-                    Get Started <Plus className="w-4 h-4" />
-                  </button>
-                </div>
+                </InView>
               </div>
             </section>
 
@@ -884,35 +894,37 @@ const LuminaEvents = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-100/90 backdrop-blur rounded-3xl p-8 md:p-12 relative overflow-hidden">
-                <div className="flex flex-col md:flex-row gap-8 items-center">
-                  <div className="w-full md:w-1/3 relative">
-                    <div className="aspect-square bg-gray-300 rounded-2xl overflow-hidden relative">
-                      <img
-                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800"
-                        className="object-cover w-full h-full"
-                        alt="Client"
-                        onError={handleImageError}
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                        <div className="w-12 h-12 bg-white/30 backdrop-blur rounded-full flex items-center justify-center">
-                          <Play className="w-5 h-5 text-white fill-current" />
+              <InView>
+                <div className="bg-gray-100/90 backdrop-blur rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                  <div className="flex flex-col md:flex-row gap-8 items-center">
+                    <div className="w-full md:w-1/3 relative">
+                      <div className="aspect-square bg-gray-300 rounded-2xl overflow-hidden relative">
+                        <img
+                          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800"
+                          className="object-cover w-full h-full"
+                          alt="Client"
+                          onError={handleImageError}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                          <div className="w-12 h-12 bg-white/30 backdrop-blur rounded-full flex items-center justify-center">
+                            <Play className="w-5 h-5 text-white fill-current" />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="w-full md:w-2/3">
-                    <div className="flex text-yellow-500 mb-4 text-sm">★★★★★ 5.0</div>
-                    <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                      "Lumina understood our vibe perfectly. They didn't just take photos; they captured the chaos, the laughter, and the tears. The team was invisible yet everywhere."
-                    </blockquote>
-                    <div>
-                      <cite className="not-italic font-bold block text-lg">Sofia & Rahul</cite>
-                      <span className="text-gray-500 text-sm">Married in Goa, 2024</span>
+                    <div className="w-full md:w-2/3">
+                      <div className="flex text-yellow-500 mb-4 text-sm">★★★★★ 5.0</div>
+                      <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
+                        "Lumina understood our vibe perfectly. They didn't just take photos; they captured the chaos, the laughter, and the tears. The team was invisible yet everywhere."
+                      </blockquote>
+                      <div>
+                        <cite className="not-italic font-bold block text-lg">Sofia & Rahul</cite>
+                        <span className="text-gray-500 text-sm">Married in Goa, 2024</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </InView>
             </section>
 
             {/* FAQ */}

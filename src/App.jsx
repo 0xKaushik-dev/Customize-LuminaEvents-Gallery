@@ -61,7 +61,7 @@ function InView({ children, className = "", delay = 0 }) {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out transform ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      className={`duration-1000 ease-out transition-[opacity,transform] will-change-[opacity,transform] ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
@@ -248,7 +248,7 @@ const LuminaEvents = () => {
   // Smooth Scroll Implementation
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2, // Standard smooth scroll duration
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       direction: 'vertical',
       gestureDirection: 'vertical',
@@ -256,7 +256,6 @@ const LuminaEvents = () => {
       mouseMultiplier: 1,
       smoothTouch: false,
       touchMultiplier: 2,
-      wheelMultiplier: 1, // Reset to standard speed
     });
 
     function raf(time) {

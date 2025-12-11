@@ -213,8 +213,8 @@ function BackgroundBeams({ className, intensity = "strong" }) {
 
   return (
     <div className={cn("fixed inset-0 w-full h-full pointer-events-none overflow-hidden", className)}>
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ filter: "blur(35px)" }} />
-      <div className="absolute inset-0 bg-neutral-100/30" style={{ animation: 'pulseOverlay 10s ease-in-out infinite', backdropFilter: 'blur(80px)' }} />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ filter: "blur(20px)" }} />
+      <div className="absolute inset-0 bg-neutral-100/30" style={{ animation: 'pulseOverlay 10s ease-in-out infinite', backdropFilter: 'blur(40px)' }} />
       <style>{`@keyframes pulseOverlay { 0% { opacity: 0.05; } 50% { opacity: 0.15; } 100% { opacity: 0.05; } }`}</style>
     </div>
   );
@@ -259,14 +259,17 @@ const LuminaEvents = () => {
       touchMultiplier: 2,
     });
 
+    let rafId;
+
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);

@@ -773,7 +773,7 @@ const LuminaEvents = () => {
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[150px] md:auto-rows-[250px]">
                 {homeGalleryHighlights.map((img, idx) => (
-                  <InView key={idx} delay={idx * 100} className={`relative overflow-hidden rounded-2xl group ${img.className} bg-gray-100`}>
+                  <div key={idx} className={`relative overflow-hidden rounded-2xl group ${img.className} bg-gray-100`}>
                     <img
                       src={img.src}
                       alt="Gallery Highlight"
@@ -781,7 +781,7 @@ const LuminaEvents = () => {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                  </InView>
+                  </div>
                 ))}
               </div>
 
@@ -815,16 +815,14 @@ const LuminaEvents = () => {
                 <div className="md:w-2/3">
                   <div className="divide-y divide-gray-800">
                     {services.map((service, idx) => (
-                      <InView key={idx} delay={idx * 100}>
-                        <div className="py-6 group cursor-pointer transition-colors hover:bg-gray-900 px-4 -mx-4 rounded-xl">
-                          <div className="flex items-center justify-between">
-                            <h3 className="text-2xl md:text-3xl font-light group-hover:pl-4 transition-all duration-300 flex items-center gap-4">
-                              {service.title}
-                            </h3>
-                            <Plus className="text-gray-500 group-hover:text-white transition-colors group-hover:rotate-90 duration-300" />
-                          </div>
+                      <div key={idx} className="py-6 group cursor-pointer transition-colors hover:bg-gray-900 px-4 -mx-4 rounded-xl">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-2xl md:text-3xl font-light group-hover:pl-4 transition-all duration-300 flex items-center gap-4">
+                            {service.title}
+                          </h3>
+                          <Plus className="text-gray-500 group-hover:text-white transition-colors group-hover:rotate-90 duration-300" />
                         </div>
-                      </InView>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -840,7 +838,7 @@ const LuminaEvents = () => {
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Package 1 */}
-                <InView delay={100} className="h-full">
+                <div className="h-full">
                   <div className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 h-full">
                     <div className="flex justify-between items-start mb-6">
                       <span className="bg-gray-100 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Most Popular</span>
@@ -861,10 +859,10 @@ const LuminaEvents = () => {
                       Inquire Now <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
-                </InView>
+                </div>
 
                 {/* Package 2 */}
-                <InView delay={300} className="h-full">
+                <div className="h-full">
                   <div className="bg-black text-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative overflow-hidden h-full">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gray-800 rounded-full blur-3xl -mr-16 -mt-16 opacity-50"></div>
                     <div className="flex justify-between items-start mb-6 relative z-10">
@@ -886,7 +884,7 @@ const LuminaEvents = () => {
                       Get Started <Plus className="w-4 h-4" />
                     </button>
                   </div>
-                </InView>
+                </div>
               </div>
             </section>
 
@@ -900,37 +898,35 @@ const LuminaEvents = () => {
                 </div>
               </div>
 
-              <InView>
-                <div className="bg-gray-100/90 backdrop-blur rounded-3xl p-8 md:p-12 relative overflow-hidden">
-                  <div className="flex flex-col md:flex-row gap-8 items-center">
-                    <div className="w-full md:w-1/3 relative">
-                      <div className="aspect-square bg-gray-300 rounded-2xl overflow-hidden relative">
-                        <img
-                          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800"
-                          className="object-cover w-full h-full"
-                          alt="Client"
-                          onError={handleImageError}
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                          <div className="w-12 h-12 bg-white/30 backdrop-blur rounded-full flex items-center justify-center">
-                            <Play className="w-5 h-5 text-white fill-current" />
-                          </div>
+              <div className="bg-gray-100/90 backdrop-blur rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                <div className="flex flex-col md:flex-row gap-8 items-center">
+                  <div className="w-full md:w-1/3 relative">
+                    <div className="aspect-square bg-gray-300 rounded-2xl overflow-hidden relative">
+                      <img
+                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800"
+                        className="object-cover w-full h-full"
+                        alt="Client"
+                        onError={handleImageError}
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                        <div className="w-12 h-12 bg-white/30 backdrop-blur rounded-full flex items-center justify-center">
+                          <Play className="w-5 h-5 text-white fill-current" />
                         </div>
                       </div>
                     </div>
-                    <div className="w-full md:w-2/3">
-                      <div className="flex text-yellow-500 mb-4 text-sm">★★★★★ 5.0</div>
-                      <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                        "Lumina understood our vibe perfectly. They didn't just take photos; they captured the chaos, the laughter, and the tears. The team was invisible yet everywhere."
-                      </blockquote>
-                      <div>
-                        <cite className="not-italic font-bold block text-lg">Sofia & Rahul</cite>
-                        <span className="text-gray-500 text-sm">Married in Goa, 2024</span>
-                      </div>
+                  </div>
+                  <div className="w-full md:w-2/3">
+                    <div className="flex text-yellow-500 mb-4 text-sm">★★★★★ 5.0</div>
+                    <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
+                      "Lumina understood our vibe perfectly. They didn't just take photos; they captured the chaos, the laughter, and the tears. The team was invisible yet everywhere."
+                    </blockquote>
+                    <div>
+                      <cite className="not-italic font-bold block text-lg">Sofia & Rahul</cite>
+                      <span className="text-gray-500 text-sm">Married in Goa, 2024</span>
                     </div>
                   </div>
                 </div>
-              </InView>
+              </div>
             </section>
 
             {/* FAQ */}

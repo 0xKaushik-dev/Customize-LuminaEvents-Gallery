@@ -690,7 +690,7 @@ const LuminaEvents = () => {
 
                 <div className="flex items-center gap-2 mt-8 text-sm font-medium">
                   ★★★★★ 4.9/5
-                  <span className="text-gray-400 font-normal ml-2">Trusted by 200+ couples & brands</span>
+                  <span className="text-gray-600 font-normal ml-2">Trusted by 200+ couples & brands</span>
                 </div>
               </InView>
 

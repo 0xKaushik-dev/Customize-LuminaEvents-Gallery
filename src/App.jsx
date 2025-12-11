@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { VerticalCutReveal } from './components/VerticalCutReveal';
 import Lenis from 'lenis';
 import {
   Menu,
@@ -725,9 +726,15 @@ const LuminaEvents = () => {
                 <div className="md:w-2/3">
                   <InView delay={200}>
                     <h2 className="text-3xl md:text-5xl font-medium leading-tight mb-8">
-                      We focus on creating <br />
-                      <span className="text-gray-400">simple, purposeful,</span> <br />
-                      and elegant memories.
+                      <VerticalCutReveal splitBy="words" staggerDuration={0.025} staggerFrom="first" transition={{ type: "spring", stiffness: 200, damping: 20 }} startWhenInView>
+                        We focus on creating
+                      </VerticalCutReveal>
+                      <VerticalCutReveal splitBy="words" staggerDuration={0.025} staggerFrom="first" transition={{ type: "spring", stiffness: 200, damping: 20 }} containerClassName="text-gray-400 block" startWhenInView>
+                        simple, purposeful,
+                      </VerticalCutReveal>
+                      <VerticalCutReveal splitBy="words" staggerDuration={0.025} staggerFrom="first" transition={{ type: "spring", stiffness: 200, damping: 20 }} startWhenInView>
+                        and elegant memories.
+                      </VerticalCutReveal>
                     </h2>
                     <p className="text-gray-600 mb-12 max-w-lg">
                       Our studio is dedicated to the art of visual storytelling. We strip away the artificial to reveal the genuine emotion of your special day. From high-end drone cinematography to intimate candid photography, we cover it all.
